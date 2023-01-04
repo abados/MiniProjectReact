@@ -29,12 +29,6 @@ export const ProductsPage = () => {
     setKey(productKey);
   }
 
-  // function handleUpadate(product) {
-  //   navigate("/editProduct", {
-  //     state: product,
-  //   });
-  // }
-
   const handleUpadate = (product, productID, productName) => {
     navigate("/editProduct", {
       state: {
@@ -45,8 +39,9 @@ export const ProductsPage = () => {
     });
   };
 
-  const handleDelete = (productID) => {
+  const handleDelete = async (productID) => {
     deleteProductFromDb(productID);
+    await getProductsFromDB();
   };
 
   return (
@@ -113,7 +108,7 @@ export const ProductsPage = () => {
               </td>
             </tr>
           )}
-        </tbody>
+        </tbody>{" "}
       </table>
     </div>
   );
